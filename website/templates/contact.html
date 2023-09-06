@@ -1,0 +1,142 @@
+{% extends 'base.html'%}
+{% block title %}{% endblock %}
+{% load static %}
+
+{% block content %}
+
+  <!-- map section -->
+
+  <section class="map_section">
+    <div id="map" class="h-100 w-100 ">
+    </div>
+
+    <div class="form_container ">
+      <div class="row">
+        <div class="col-md-8 col-sm-10 offset-md-4">
+
+          <div class="text-center">
+            <center>
+              <h3>
+                Get In Touch
+              </h3>
+            </center>
+          </div>
+          <form action="{% url 'contact' %}" method="POST">
+               {% csrf_token %}
+
+            <div>
+              <input type="text" name = "name" placeholder="Name" class="pt-3">
+              {% for err in form.name.errors %}
+                  <small class = "text-danger">{{err}}</small>
+              {% endfor %}
+            </div>
+            <div>
+              <input type=" text" name = "phone" placeholder="Phone">
+              {% for err in form.phone.errors %}
+                  <small class = "text-danger">{{err}}</small>
+              {% endfor %}
+            </div>
+            <div>
+              <input type="email" name = "email" placeholder="Email">
+              {% for err in form.email.errors %}
+                  <small class = "text-danger">{{err}}</small>
+              {% endfor %}
+            </div>
+            <div>
+              <input type="text" name = "message" class="message-box" placeholder="Message">
+              {% for err in form.message.errors %}
+                  <small class = "text-danger">{{err}}</small>
+              {% endfor %}
+            </div>
+            <div class="d-flex justify-content-center">
+              <button>
+                SEND
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+  <!-- end map section -->
+
+  <!-- info section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="info_items">
+        <a href="">
+          <div class="item ">
+            <div class="img-box box-1">
+              <img src="" alt="">
+            </div>
+            <div class="detail-box">
+              <p>
+                F12, JEMA'A ROAD GONIN GORA CHIKUN L.G.A
+                KADUNA STATE NIGERIA
+              </p>
+            </div>
+          </div>
+        </a>
+        <a href="">
+          <div class="item ">
+            <div class="img-box box-2">
+              <img src="" alt="">
+            </div>
+            <div class="detail-box">
+              <p>
+                +234 9075260636
+              </p>
+            </div>
+          </div>
+        </a>
+        <a href="">
+          <div class="item ">
+            <div class="img-box box-3">
+              <img src="" alt="">
+            </div>
+            <div class="detail-box">
+              <p>
+                godwinlivinus28@gmail.com
+
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+ <script>
+    // This example adds a marker to indicate the position of Bondi Beach in Sydney,
+    // Australia.
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 11,
+        center: {
+          lat: 40.645037,
+          lng: -73.880224
+        },
+      });
+
+      var image = 'images/maps-and-flags.png';
+      var beachMarker = new google.maps.Marker({
+        position: {
+          lat: 40.645037,
+          lng: -73.880224
+        },
+        map: map,
+        icon: image
+      });
+    }
+  </script>
+  <!-- google map js -->
+ <iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d8055113.041564483!2d5.776509096652793!3d9.667310074016974!3m2!1i1024!2i768!4f13.1!2m1!1sF12%2C%20JEMA&#39;A%20ROAD%20GONIN%20GORA%20CHIKUN%20L.G.A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20KADUNA%20STATE!5e0!3m2!1sen!2sng!4v1692440205778!5m2!1sen!2sng" width="1350" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+
+ </iframe>
+  <!-- end google map js -->
+  <!-- end info_section -->
+
+  {% endblock %}
